@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">Amphibians</string>
     <string name="app_title">Amphibians</string>
+    <string name="loading">loading\n</string>
+    <string name="loading_failed">Failed to load</string>
+    <string name="retry">Retry\n</string>
+    <string name="amphibian_photo">ambphibian image</string>
 </resources>
