@@ -85,30 +85,26 @@ fun AmphibianCard(
 
     ){
     Card(
-        modifier = modifier.fillMaxWidth().padding(8.dp),
-        shape = RoundedCornerShape(12.dp),
-        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
-    ) {
+        modifier = modifier.fillMaxWidth(),
+        shape = RoundedCornerShape(16.dp),
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.5f)
+    )
+    ){
         Column(
-            modifier = Modifier
-                .padding(16.dp)
-                .fillMaxWidth(),
-            verticalArrangement = Arrangement.spacedBy(4.dp),
-            horizontalAlignment = Alignment.Start
+
         ) {
-            Row() {
+            Column(modifier = Modifier.padding(16.dp)) {
                 Text(
-                    text = amphibian.name ,
-                    style = MaterialTheme.typography.headlineSmall,
-                    fontWeight = FontWeight.Bold
+                    text = amphibian.name,
+                    style = MaterialTheme.typography.titleLarge,
+                    fontWeight = FontWeight.ExtraBold
                 )
-
                 Text(
-                    text = " (" +amphibian.type + ")" ,
-                    style = MaterialTheme.typography.headlineSmall,
-                    color = MaterialTheme.colorScheme.secondary
+                    text = amphibian.type,
+                    style = MaterialTheme.typography.labelMedium,
+                    color = MaterialTheme.colorScheme.primary
                 )
-
             }
             AsyncImage(
                 model = ImageRequest.Builder(context = LocalContext.current)
@@ -119,7 +115,9 @@ fun AmphibianCard(
                 placeholder = painterResource(R.drawable.loading_img),
                 contentDescription = stringResource(R.string.amphibian_photo),
                 contentScale = ContentScale.Crop,
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(200.dp)
             )
 
 
@@ -129,7 +127,7 @@ fun AmphibianCard(
             Text(
                 text = amphibian.description,
                 style = MaterialTheme.typography.bodyMedium,
-                textAlign = TextAlign.Justify
+                textAlign = TextAlign.Start
             )
         }
     }
@@ -143,7 +141,7 @@ fun AmphibianList(
 ) {
     LazyColumn(
         modifier = modifier,
-        contentPadding = PaddingValues(8.dp),
+        contentPadding = PaddingValues(16.dp),
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ){
         items(amphibians){amphibian ->
